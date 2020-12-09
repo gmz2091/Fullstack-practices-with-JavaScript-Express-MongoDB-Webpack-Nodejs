@@ -1,4 +1,9 @@
-require('dotenv').config()
+if (process.env.NODE_ENV != 'production') {
+    require('dotenv').config()    
+}
+
+
+
 const express = require('express')
 const morgan = require('morgan')
 const multer = require('multer')
@@ -31,7 +36,7 @@ app.use( '/api/books', require('./routes/books'))
 
 
 //Settings
-app.set('port', 4000)
+app.set('port', process.env.PORT || 4000)
 
 
 
